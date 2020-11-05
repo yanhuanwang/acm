@@ -23,6 +23,142 @@
 #include <random>
 using namespace std;
 
+
+//output overload BEGIN
+using uint = unsigned int;
+using ll = long long;
+using ull = unsigned long long;
+constexpr ll TEN(int n) { return (n == 0) ? 1 : 10 * TEN(n - 1); }
+template <class T> using V = vector<T>;
+template <class T> using VV = V<V<T>>;
+
+#define LOCAL
+#ifdef LOCAL
+
+ostream& operator<<(ostream& os, __int128_t x) {
+    if (x < 0) {
+        os << "-";
+        x *= -1;
+    }
+    if (x == 0) {
+        return os << "0";
+    }
+    string s;
+    while (x) {
+        s += char(x % 10 + '0');
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    return os << s;
+}
+ostream& operator<<(ostream& os, __uint128_t x) {
+    if (x == 0) {
+        return os << "0";
+    }
+    string s;
+    while (x) {
+        s += char(x % 10 + '0');
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    return os << s;
+}
+
+template <class T, class U>
+ostream& operator<<(ostream& os, const pair<T, U>& p);
+template <class T> ostream& operator<<(ostream& os, const V<T>& v);
+template <class T> ostream& operator<<(ostream& os, const deque<T>& v);
+template <class T, size_t N>
+ostream& operator<<(ostream& os, const array<T, N>& a);
+template <class T> ostream& operator<<(ostream& os, const set<T>& s);
+template <class T, class U>
+ostream& operator<<(ostream& os, const map<T, U>& m);
+
+template <class T, class U>
+ostream& operator<<(ostream& os, const pair<T, U>& p) {
+    return os << "P(" << p.first << ", " << p.second << ")";
+}
+
+template <class T> ostream& operator<<(ostream& os, const V<T>& v) {
+    os << "[";
+    bool f = false;
+    for (auto d : v) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
+
+template <class T> ostream& operator<<(ostream& os, const deque<T>& v) {
+    os << "[";
+    bool f = false;
+    for (auto d : v) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
+template <class T, size_t N>
+ostream& operator<<(ostream& os, const array<T, N>& a) {
+    os << "[";
+    bool f = false;
+    for (auto d : a) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
+
+template <class T> ostream& operator<<(ostream& os, const set<T>& s) {
+    os << "{";
+    bool f = false;
+    for (auto d : s) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "}";
+}
+
+template <class T, class U>
+ostream& operator<<(ostream& os, const map<T, U>& s) {
+    os << "{";
+    bool f = false;
+    for (auto p : s) {
+        if (f) os << ", ";
+        f = true;
+        os << p.first << ": " << p.second;
+    }
+    return os << "}";
+}
+
+struct PrettyOS {
+    ostream& os;
+    bool first;
+
+    template <class T> auto operator<<(T&& x) {
+        if (!first) os << ", ";
+        first = false;
+        os << x;
+        return *this;
+    }
+};
+template <class... T> void dbg0(T&&... t) {
+    (PrettyOS{cerr, true} << ... << t);
+}
+// #define dbg(...)                                            \
+//     do {                                                    \
+//         cerr << "LINE("<<__LINE__ << ")" << " : " << #__VA_ARGS__ << " = "; \
+//         dbg0(__VA_ARGS__);                                  \
+//         cerr << endl;                                       \
+//     } while (false);
+// #else
+// #define dbg(...)
+#endif
+//output overload END
 #define ll long long
 #define int ll
 #define ld long double
@@ -140,7 +276,8 @@ template<class A, class B> void write(pair<A,B> x) {
 }
 
 template<class A> void write(A x) {
-	cout << to_string(x);
+	// cout << to_string(x);
+    cout<<x;
 }
 template<class H, class... T> void write(const H& h, const T&... t) {
 	write(h);
@@ -160,7 +297,8 @@ void DBG() {
 	cerr << "]" << endl;
 }
 template<class H, class... T> void DBG(H h, T... t) {
-	cerr << to_string(h);
+	// cerr << to_string(h);
+    cerr << h;
 	if(sizeof...(t))
 		cerr << ", ";
 	DBG(t...);
@@ -210,37 +348,33 @@ int dy[]={1,-1,0,0};
 signed main(){
     fast_io();
     // string s;
-    int n,d;
-    read(n,d);
-    vt<int>h(n);
-    read(h);
-    int dp[n];
-    memset(dp,0,sizeof(dp));
-    int res=0,ret=-1;
-    vt<int>ans(n,-1);
-    for(int i=0;i<n;i++){
-        dp[i]=1;
-        for(int j=i-1;j>=0;j--){
-            if(abs(h[i]-h[j])>=d){
-                if(dp[j]+1>dp[i]){
-                    ans[i]=j;
-                }
-                umax(dp[i],dp[j]+1);
-            }
-        }
-        if(dp[i]>res){
-            ret=i;
-        }
-        umax(res,dp[i]);
-    }
-    print(res);
-    vt<int>seq;
-    while(ans[ret]!=-1){
-        seq.pb(ret+1);
-        ret=ans[ret];
-    }
-    seq.pb(ret+1);
-    reverse(all(seq));
-    print(seq);
+    vector<int>a={1,2,3,4};
+    cout<<a<<endl;
+    dbg(a);
+    dbg0(a);
+
+    int b=3,c=3;
+    cout<<b<<c<<endl;
+    dbg(b,c);
+    // dbg1(b,c);
+
+    pair<int,string>d={11,"ddd"};
+    dbg(d);
+
+    set<char>s={'a','c'};
+    dbg(s);
+
+    set<vector<int>>ss;
+    ss.insert({1,2,3});
+    ss.insert({3,4,5});
+    dbg(ss);
+
+    map<int,int>m;
+    m[2]=3;
+    dbg(m);
+
+    map<int,vector<string>>mm;
+    mm[2].push_back("sss");
+    dbg(mm);
     return 0;
 }
