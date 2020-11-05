@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <algorithm>
+#include <chrono>
 #include <string>
 #include <string.h>
 #include <map>
@@ -54,20 +55,20 @@ template<class T> bool umax(T& a, const T& b) {
 	return a<b?a=b, 1:0;
 }
 
-ll FIRSTTRUE(function<bool(ll)> f, ll lb, ll rb) {
-	while(lb<rb) {
-		ll mb=(lb+rb)/2;
-		f(mb)?rb=mb:lb=mb+1;
-	}
-	return lb;
-}
-ll LASTTRUE(function<bool(ll)> f, ll lb, ll rb) {
-	while(lb<rb) {
-		ll mb=(lb+rb+1)/2;
-		f(mb)?lb=mb:rb=mb-1;
-	}
-	return lb;
-}
+// ll FIRSTTRUE(function<bool(ll)> f, ll lb, ll rb) {
+// 	while(lb<rb) {
+// 		ll mb=(lb+rb)/2;
+// 		f(mb)?rb=mb:lb=mb+1;
+// 	}
+// 	return lb;
+// }
+// ll LASTTRUE(function<bool(ll)> f, ll lb, ll rb) {
+// 	while(lb<rb) {
+// 		ll mb=(lb+rb+1)/2;
+// 		f(mb)?lb=mb:rb=mb-1;
+// 	}
+// 	return lb;
+// }
 
 template<class A> void read(vt<A>& v);
 template<class A, size_t S> void read(ar<A, S>& a);
@@ -134,6 +135,10 @@ template<class T> string to_string(T v) {
     return res;
 }
 
+template<class A, class B> void write(pair<A,B> x) {
+	cout << to_string(x.first)<<' '<<to_string(x.second);
+}
+
 template<class A> void write(A x) {
 	cout << to_string(x);
 }
@@ -191,11 +196,51 @@ template<class T>
 void make_unique(T & v) {
     sort(v.begin(), v.end()); v.erase(unique(v.begin(), v.end()), v.end());
 }
+void lower(string &s){
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+}
+void upper(string &s){
+    transform(s.begin(), s.end(), s.begin(), ::toupper);
+}
 using namespace std;
+
+int dx[]={0,0,1,-1};
+int dy[]={1,-1,0,0};
 
 signed main(){
     fast_io();
-    // cout <<fixed<<std::setprecision(9);
-    print(get_random());
+    // string s;
+    int n,d;
+    read(n,d);
+    vt<int>h(n);
+    read(h);
+    int dp[n];
+    memset(dp,0,sizeof(dp));
+    int res=0,ret=-1;
+    vt<int>ans(n,-1);
+    for(int i=0;i<n;i++){
+        dp[i]=1;
+        for(int j=i-1;j>=0;j--){
+            if(abs(h[i]-h[j])>=d){
+                if(dp[j]+1>dp[i]){
+                    ans[i]=j;
+                }
+                umax(dp[i],dp[j]+1);
+            }
+        }
+        if(dp[i]>res){
+            ret=i;
+        }
+        umax(res,dp[i]);
+    }
+    print(res);
+    vt<int>seq;
+    while(ans[ret]!=-1){
+        seq.pb(ret+1);
+        ret=ans[ret];
+    }
+    seq.pb(ret+1);
+    reverse(all(seq));
+    print(seq);
     return 0;
 }
