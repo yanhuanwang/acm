@@ -25,115 +25,115 @@ using namespace std;
 
 
 //output overload BEGIN
-// using uint = unsigned int;
-// using ll = long long;
-// using ull = unsigned long long;
-// constexpr ll TEN(int n) { return (n == 0) ? 1 : 10 * TEN(n - 1); }
-// template <class T> using V = vector<T>;
-// template <class T> using VV = V<V<T>>;
+using uint = unsigned int;
+using ll = long long;
+using ull = unsigned long long;
+constexpr ll TEN(int n) { return (n == 0) ? 1 : 10 * TEN(n - 1); }
+template <class T> using V = vector<T>;
+template <class T> using VV = V<V<T>>;
 
-// #define LOCAL
-// #ifdef LOCAL
+#define LOCAL
+#ifdef LOCAL
 
-// ostream& operator<<(ostream& os, __int128_t x) {
-//     if (x < 0) {
-//         os << "-";
-//         x *= -1;
-//     }
-//     if (x == 0) {
-//         return os << "0";
-//     }
-//     string s;
-//     while (x) {
-//         s += char(x % 10 + '0');
-//         x /= 10;
-//     }
-//     reverse(s.begin(), s.end());
-//     return os << s;
-// }
-// ostream& operator<<(ostream& os, __uint128_t x) {
-//     if (x == 0) {
-//         return os << "0";
-//     }
-//     string s;
-//     while (x) {
-//         s += char(x % 10 + '0');
-//         x /= 10;
-//     }
-//     reverse(s.begin(), s.end());
-//     return os << s;
-// }
+ostream& operator<<(ostream& os, __int128_t x) {
+    if (x < 0) {
+        os << "-";
+        x *= -1;
+    }
+    if (x == 0) {
+        return os << "0";
+    }
+    string s;
+    while (x) {
+        s += char(x % 10 + '0');
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    return os << s;
+}
+ostream& operator<<(ostream& os, __uint128_t x) {
+    if (x == 0) {
+        return os << "0";
+    }
+    string s;
+    while (x) {
+        s += char(x % 10 + '0');
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    return os << s;
+}
 
-// template <class T, class U>
-// ostream& operator<<(ostream& os, const pair<T, U>& p);
-// template <class T> ostream& operator<<(ostream& os, const V<T>& v);
-// template <class T> ostream& operator<<(ostream& os, const deque<T>& v);
-// template <class T, size_t N>
-// ostream& operator<<(ostream& os, const array<T, N>& a);
-// template <class T> ostream& operator<<(ostream& os, const set<T>& s);
-// template <class T, class U>
-// ostream& operator<<(ostream& os, const map<T, U>& m);
+template <class T, class U>
+ostream& operator<<(ostream& os, const pair<T, U>& p);
+template <class T> ostream& operator<<(ostream& os, const V<T>& v);
+template <class T> ostream& operator<<(ostream& os, const deque<T>& v);
+template <class T, size_t N>
+ostream& operator<<(ostream& os, const array<T, N>& a);
+template <class T> ostream& operator<<(ostream& os, const set<T>& s);
+template <class T, class U>
+ostream& operator<<(ostream& os, const map<T, U>& m);
 
-// template <class T, class U>
-// ostream& operator<<(ostream& os, const pair<T, U>& p) {
-//     return os << "P(" << p.first << ", " << p.second << ")";
-// }
+template <class T, class U>
+ostream& operator<<(ostream& os, const pair<T, U>& p) {
+    return os << "P(" << p.first << ", " << p.second << ")";
+}
 
-// template <class T> ostream& operator<<(ostream& os, const V<T>& v) {
-//     os << "[";
-//     bool f = false;
-//     for (auto d : v) {
-//         if (f) os << ", ";
-//         f = true;
-//         os << d;
-//     }
-//     return os << "]";
-// }
+template <class T> ostream& operator<<(ostream& os, const V<T>& v) {
+    os << "[";
+    bool f = false;
+    for (auto d : v) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
 
-// template <class T> ostream& operator<<(ostream& os, const deque<T>& v) {
-//     os << "[";
-//     bool f = false;
-//     for (auto d : v) {
-//         if (f) os << ", ";
-//         f = true;
-//         os << d;
-//     }
-//     return os << "]";
-// }
-// template <class T, size_t N>
-// ostream& operator<<(ostream& os, const array<T, N>& a) {
-//     os << "[";
-//     bool f = false;
-//     for (auto d : a) {
-//         if (f) os << ", ";
-//         f = true;
-//         os << d;
-//     }
-//     return os << "]";
-// }
+template <class T> ostream& operator<<(ostream& os, const deque<T>& v) {
+    os << "[";
+    bool f = false;
+    for (auto d : v) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
+template <class T, size_t N>
+ostream& operator<<(ostream& os, const array<T, N>& a) {
+    os << "[";
+    bool f = false;
+    for (auto d : a) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "]";
+}
 
-// template <class T> ostream& operator<<(ostream& os, const set<T>& s) {
-//     os << "{";
-//     bool f = false;
-//     for (auto d : s) {
-//         if (f) os << ", ";
-//         f = true;
-//         os << d;
-//     }
-//     return os << "}";
-// }
+template <class T> ostream& operator<<(ostream& os, const set<T>& s) {
+    os << "{";
+    bool f = false;
+    for (auto d : s) {
+        if (f) os << ", ";
+        f = true;
+        os << d;
+    }
+    return os << "}";
+}
 
-// template <class T, class U>
-// ostream& operator<<(ostream& os, const map<T, U>& s) {
-//     os << "{";
-//     bool f = false;
-//     for (auto p : s) {
-//         if (f) os << ", ";
-//         f = true;
-//         os << p.first << ": " << p.second;
-//     }
-//     return os << "}";
-// }
+template <class T, class U>
+ostream& operator<<(ostream& os, const map<T, U>& s) {
+    os << "{";
+    bool f = false;
+    for (auto p : s) {
+        if (f) os << ", ";
+        f = true;
+        os << p.first << ": " << p.second;
+    }
+    return os << "}";
+}
 
 // struct PrettyOS {
 //     ostream& os;
@@ -157,7 +157,7 @@ using namespace std;
 //     } while (false);
 // #else
 // #define dbg(...)
-// #endif
+#endif
 //output overload END
 #define ll long long
 #define int ll
@@ -293,7 +293,6 @@ template<class T> string to_string(T v) {
 
 template<class A> void write(A x) {
 	cout << to_string(x);
-    cout<<x;
 }
 template<class H, class... T> void write(const H& h, const T&... t) {
 	write(h);
@@ -314,7 +313,6 @@ void DBG() {
 }
 template<class H, class... T> void DBG(H h, T... t) {
 	cerr << to_string(h);
-    // cerr << h;
 	if(sizeof...(t))
 		cerr << ", ";
 	DBG(t...);
@@ -384,7 +382,7 @@ signed main(){
     // string s;
     vector<int>a={1,2,3,4};
     // read(a);
-    // cout<<a<<endl;
+    cout<<a<<endl;
     dbg(a);
     // dbg0(a);
 
@@ -394,25 +392,30 @@ signed main(){
     // // dbg1(b,c);
 
     pair<int,string>d={11,"ddd"};
+    cout<<d<<endl;
     dbg(d);
 
     set<char>s={'a','c'};
+    cout<<s<<endl;
     dbg(s);
 
     set<vector<int>>ss;
     ss.insert({1,2,3});
     ss.insert({3,4,5});
+    cout<<ss<<endl;
     dbg(ss);
 
     map<int,int>m;
     m[2]=3;
+    cout<<m<<endl;
     dbg(m);
 
     map<int,vector<string>>mm;
     mm[2].push_back("sss");
     mm[3].push_back("www");
+    cout<<mm<<endl;
     dbg(mm);
-
+    print(mm);
     // node aa(1);
     // node* bb=new node(33);
     // // cout<<aa;
