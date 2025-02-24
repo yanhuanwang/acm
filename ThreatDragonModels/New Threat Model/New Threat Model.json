@@ -20,7 +20,7 @@
           {
             "position": {
               "x": 100,
-              "y": -400
+              "y": -430
             },
             "size": {
               "width": 112.5,
@@ -136,7 +136,7 @@
           {
             "position": {
               "x": 100,
-              "y": -300
+              "y": -310
             },
             "size": {
               "width": 112.5,
@@ -252,7 +252,7 @@
           {
             "position": {
               "x": 100,
-              "y": -190
+              "y": -210
             },
             "size": {
               "width": 112.5,
@@ -376,7 +376,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Juice Shop\nApi Server"
+                "text": "Juice Shop\nApi Server\n(Bussiness Logic &\nAuth)"
               },
               "body": {
                 "stroke": "#333333",
@@ -472,18 +472,25 @@
             "zIndex": 5,
             "data": {
               "type": "tm.Actor",
-              "name": "Juice Shop\nApi Server",
+              "name": "Juice Shop\nApi Server\n(Bussiness Logic &\nAuth)",
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": []
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
             "position": {
-              "x": 355,
+              "x": 365,
               "y": -91
             },
             "size": {
@@ -933,7 +940,8 @@
             "target": {
               "cell": "7442276f-32be-486c-8a2e-5e79c3fdf87e",
               "port": "49353b91-299a-48d0-aaf7-7a447e82c005"
-            }
+            },
+            "vertices": []
           }
         ],
         "description": "bth"
