@@ -953,17 +953,7 @@
               "cell": "7442276f-32be-486c-8a2e-5e79c3fdf87e",
               "port": "49353b91-299a-48d0-aaf7-7a447e82c005"
             },
-            "vertices": [],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            "vertices": []
           }
         ],
         "description": "bth"
