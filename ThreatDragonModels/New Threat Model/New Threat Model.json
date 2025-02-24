@@ -379,8 +379,8 @@
                 "text": "Juice Shop\nApi Server\n(Bussiness Logic &\nAuth)"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -476,16 +476,28 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
+              "threats": [
+                {
+                  "id": "f88ee3b9-57b2-484f-b629-4fae7445db90",
+                  "title": "Spoofing",
+                  "status": "Open",
+                  "severity": "TBA",
+                  "type": "Confidentiality",
+                  "description": "An attacker may impersonate a legitimate user or service",
+                  "mitigation": "Enforce strong authentication mechanisms (e.g., multi-factor authentication).\nUse secure session management (secure cookies, HTTPOnly flags).\nImplement HTTPS to protect credentials in transit.\n",
+                  "modelType": "CIA",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
               ],
-              "name": null
+              "threatFrequency": {
+                "confidentiality": 1,
+                "integrity": 0,
+                "availability": 0
+              }
             }
           },
           {
@@ -941,7 +953,17 @@
               "cell": "7442276f-32be-486c-8a2e-5e79c3fdf87e",
               "port": "49353b91-299a-48d0-aaf7-7a447e82c005"
             },
-            "vertices": []
+            "vertices": [],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           }
         ],
         "description": "bth"
@@ -949,6 +971,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 2
+    "threatTop": 3
   }
 }
